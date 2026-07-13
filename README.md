@@ -3,6 +3,7 @@
 
 Lien: [https://golden-ark.emerald-prism.fr/](https://golden-ark.emerald-prism.fr/)
 
+PS: Ceci n'est pas le vrai Repo mais une copie ne contenant aucune donnée sensible.
 
 ## Contexte
 J'administre une communauté Discord autour du jeu ARK: Survival Evolved. Afin de faciliter la recherche d'informations et d'automatiser certaines tâches répétitives, j'ai développé en août 2024 un bot Discord nommé **IZARIX**.
