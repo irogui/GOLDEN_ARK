@@ -1,0 +1,67 @@
+<body
+{% if item['Main'].get('nom_biome') %}
+style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/static/images/fonds_cartes/{{ item['Main'].nom_biome }}.png');
+background-size: cover;"
+{% endif %}>
+</body>
+
+
+{% if item.get('Nourriture') %}
+    <div class="card_3">
+        <h5>Nourriture préférée:</h5>
+
+        <a {% if item['Nourriture'].get('est_plat', False) %}
+                href="/boutique/items/card?id_item={{ item['Nourriture'].get('id_item') }}&id_type_item={{ item['Nourriture'].get('type_item_id') }}"
+           {% endif %}>
+            <img class="logo_4" src="/static/images/boutique/Nourriture/{{ item['Nourriture'].get('image_item') }}">
+        </a>
+        <h2>{{ item['Nourriture'].get('nom_item') }}</h2>
+    </div>
+{% endif %}
+
+{% if item.get('Variantes') %}
+<div class="card_3">
+    <h5>Variantes:</h5>
+
+    <div class="conteneur_1">
+        {% if item['Variantes'] | length > 1 %}
+            <h6>|</h6>
+            {% for variante in item['Variantes'] %}
+
+                {% if variante.id_variante != 1 %}
+                    <h2>{{ variante.nom_variante }}</h2>
+                    <h6>|</h6>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <h2>Aucune Variante</h2>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+
+{% if item['Main'].get('taille_oeuf') %}
+<div class="card_3">
+    <h5>Taille de l'Oeuf:</h5>
+    <a>
+        <img class="logo_4" src="/static/images/boutique/Oeuf/{{ item['Main'].taille_oeuf }}.png">
+    </a>
+    <h2>{{ item['Main'].taille_oeuf }}</h2>
+</div>
+{% endif %}
+
+{% if item.get('Trophes') and item['Trophes'] | length > 0 %}
+<div class="card_3">
+    <h5>Trophés:</h5>
+    <div class="conteneur_1">
+        {% for trophe in item['Trophes'] %}
+        <div>
+            <a>
+                <img class="logo_4" src="/static/images/Trophe/{{ trophe.image_item }}">
+            </a>
+            <h2>{{ trophe.prix_item }}<span class="emoji gold"></span></h2>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}

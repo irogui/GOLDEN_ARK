@@ -1,0 +1,26 @@
+<div class="conteneur_4">
+    <label><h8>Munitions:</h8></label>
+
+    <div class="conteneur_1">
+        {% for munition in form['Munition'] %}
+            <input
+                name="munitions_id[]"
+                type="checkbox"
+                class="radio_1"
+                id="munition_{{ munition.id_item }}"
+                value="{{ munition.id_item }}"
+
+                {% for actual_munition in item['Munitions'] %}
+                    {% if munition.id_item == actual_munition.id_item %}
+                    checked
+                    {% endif %}
+                {% endfor %}
+                >
+
+            <label for="munition_{{ munition.id_item }}" class="card_5">
+                <img src="/static/images/boutique/Munition/{{ munition.image_item }}" alt="{{ munition.nom_item }}">
+                <h4>{{ munition.nom_item }}</h4>
+            </label>
+        {% endfor %}
+    </div>
+</div>

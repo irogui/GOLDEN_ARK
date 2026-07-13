@@ -1,0 +1,11 @@
+__pycache__/
+.idea/
+*otp*
+static/images/membres/*.jpg
+static/images/membres/*.jpeg
+static/images/membres/*.jfif
+static/images/membres/*.png
+static/images/membres/*.gif
+static/images/membres/*.webp
+static/images/membres/*.avif
+*.pyc

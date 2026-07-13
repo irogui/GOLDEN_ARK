@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+
+{% block main %}
+
+<a class="btn_2" href="/admin"><span style="height: 1.35em; margin-right: 5px;">⪦</span>MENU ADMIN</a>
+
+<h1>COMMANDES EN ATTENTE</h1>
+
+{% if commandes %}
+<div class="conteneur_4">
+
+    <table id="details" class="table_1">
+        {% include '/admin/commandes/_show_details.html' %}
+    </table>
+
+    <div class="line"></div>
+
+    <div class="conteneur_7">
+        <table class="table_2">
+            <thead>
+                <tr>
+                    <th>Opérations</th>
+                    <th>ID</th>
+                    <th>Etat</th>
+                    <th>Membre</th>
+                    <th>Code Coffre</th>
+                    <th>Carte</th>
+                    <th>Prix total</th>
+                    <th>Date d'achat</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for commande in commandes %}
+                <tr onclick="refreshCommandes({{ commande['id_commande'] }})">
+                    <td class="conteneur_4">
+                        {% if commande.etat_id == 1 %}
+                        <form action="/admin/commandes/valid" method="POST" class="conteneur_6">
+                            <button class="btn_3 btn_green">Valider</button>
+                            <input type="hidden" name="id_commande" value="{{ commande.id_commande }}">
+                        </form>
+
+                        <form action="/admin/commandes/cancel" method="POST" class="conteneur_6">
+                            <button class="btn_3 btn_red">Annuler</button>
+                            <input type="hidden" name="id_commande" value="{{ commande.id_commande }}">
+                        </form>
+                        {% endif %}
+                    </td>
+                    <td>{{ commande['id_commande'] }}</td>
+                    <td style = "color:
+                        {% if commande.etat_id == 1 %}
+                        cyan
+                        {% elif commande.etat_id == 2 %}
+                        green
+                        {% else %}
+                        red
+                        {% endif %};">
+                        {{ commande['libelle_etat'] }}
+                    </td>
+                    <td>{{ commande['nom_membre'] }}</td>
+                    <td>{{ commande['code_coffre'] }}</td>
+                    <td>{{ commande['nom_carte'] }}</td>
+                    <td>{{ commande['prix_commande'] }}<span class="emoji gold"></span></td>
+                    <td>{{ commande['date_achat'].strftime('%d/%m/%Y - %Hh%M') }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% else %}
+    <div class="conteneur_1">
+        <div class="line"></div>
+        <h5>Aucune commande pour le moment</h5>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+
+
+{% block js %}
+<!-- Gère l'affichage dynamique de la commande sélectionnée -->
+<script src="/static/styles/js/refreshCommandesAdmin.js"></script>
+
+<!-- Gère l'affichage dynamique de la commande sélectionnée -->
+<script src="/static/styles/js/refreshCommandesEtat.js"></script>
+{% endblock %}

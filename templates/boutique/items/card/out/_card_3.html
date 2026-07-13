@@ -1,0 +1,19 @@
+{% if item.get('Munitions') and item['Munitions'] | length > 0 %}
+    <div class="line"></div>
+    <h2>Munitions</h2>
+
+    <div class="conteneur_1">
+        {% for munition in item['Munitions'] %}
+        <div class="card_3">
+
+            <h4>{{ munition.nom_item }}</h4>
+
+            <a href="/boutique/items/card?id_item={{ munition.id_item }}&id_type_item={{ munition.type_item_id }}">
+                <img class="logo_4" src="/static/images/boutique/Munition/{{ munition.image_item }}">
+            </a>
+
+            <h6>{{ munition.prix_item }}<span class="emoji gold"></span></h6>
+        </div>
+        {% endfor %}
+    </div>
+{% endif %}

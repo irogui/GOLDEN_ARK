@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+
+{% block main %}
+
+<h1>Ajout {{ type.nom_type_item }}</h1>
+
+<form class="conteneur_2" method="POST" action="/boutique/items/add" enctype="multipart/form-data">
+    <input type="hidden" name="id_type_item" id="id_type_item" value="{{ type.id_type_item }}">
+
+    <div class="conteneur_4">
+        <label for="image_item"><h8>Image:</h8></label>
+
+        <div class="conteneur_1">
+            <img class="logo_3"
+                    id="preview_image_item"
+                    src=""
+                    alt="Aperçu de l'image">
+            <input name="image_item" id="image_item" type="file" accept="image/png" class="search_1">
+        </div>
+    </div>
+
+    <div class="conteneur_4">
+        <label for="nom_item"><h8>Nom:</h8></label>
+        <input name="nom_item" id="nom_item" class="search_1" type="text" placeholder="Entrez le nom de l'item..." required>
+    </div>
+
+    <div class="conteneur_4">
+        <label for="prix_item"><h8>Prix:</h8></label>
+        <input name="prix_item" id="prix_item" class="search_1" type="number" min=0 step=5 placeholder="Quel est son prix..." max="2147483647" required>
+    </div>
+
+    <div class="conteneur_4">
+        <label for="commande_admin_item"><h8>Commande Admin:</h8></label>
+        <input name="commande_admin_item" id="commande_admin_item" class="search_1" type="text" placeholder="Quel est l'identifiant de sa commande ?" required>
+    </div>
+
+    {% include '/boutique/items/add/_add_items_' + type.id_type_item | string + '.html' ignore missing %}
+
+    <button type="submit" class="btn_1 btn_green">Ajouter</button>
+</form>
+
+{% endblock %}
+
+
+{% block js %}
+<script src="/static/styles/js/image_preview.js"></script>
+{% endblock %}

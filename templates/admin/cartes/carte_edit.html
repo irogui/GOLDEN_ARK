@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<a class="btn_2" href="/admin"><span style="height: 1.35em; margin-right: 5px;">⪦</span>MENU ADMIN</a>
+
+<div class="conteneur_3">
+        <h1>Modification de Carte</h1>
+
+        <form class="conteneur_2" method="POST" action="/admin/cartes/edit">
+            <input type="hidden" name="id_carte" id="id_carte" value="{{ carte.id_carte }}">
+
+            <div class="conteneur_4">
+                <h8>Nom:</h8>
+                <h6>{{ carte.nom_carte }}</h6>
+            </div>
+
+            <div class="conteneur_4">
+                <h8>Disponible:</h8>
+                <div class="conteneur_1">
+                    <input type="radio" name="dispo_carte" id="dispo_carte_on" value="1" class="radio_1" checked>
+                    <label class="card_5" for="dispo_carte_on">OUI</label>
+
+                    <input type="radio" name="dispo_carte" id="dispo_carte_off" value="0" class="radio_1">
+                    <label class="card_5" for="dispo_carte_off">NON</label>
+                </div>
+            </div>
+
+            <div class="conteneur_4">
+                <h8>Coordonnées de la boutique:</h8>
+                <div class="conteneur_1">
+                    <label for="lat"><h10>Latitude:</h10></label>
+                    <input type="number" min="0" max="100" step="0.1" name="lat" id="lat" class="search_1" value="{{ carte.lat }}">
+
+                    <label for="lon"><h10>Longitude:</h10></label>
+                    <input type="number" min="0" max="100" step="0.1" name="lon" id="lon" class="search_1" value="{{ carte.lon }}">
+                </div>
+            </div>
+
+            <button type="submit" class="btn_1 btn_green">Valider les changements</button>
+        </form>
+</div>
+
+<a class="btn_2" href="/admin"><span style="height: 1.35em; margin-right: 5px;">⪦</span>MENU ADMIN</a>
+{% endblock %}

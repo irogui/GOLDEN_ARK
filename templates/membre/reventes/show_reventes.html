@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<h1>MES REVENTES</h1>
+
+{% if reventes %}
+<table id="details" class="table_1">
+    {% include '/membre/reventes/_show_reventes.html' %}
+</table>
+
+<div class="line"></div>
+
+
+<div class="conteneur_7">
+    <table class="table_2">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Etat</th>
+                <th>Carte</th>
+                <th>Valeur Totale</th>
+                <th>Date</th>
+                <th>Nombre d'Item</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for revente in reventes %}
+            <tr onclick="refreshReventes({{ revente['id_revente'] }})">
+                <td>{{ revente['id_revente'] }}</td>
+                <td style = "color:
+                    {% if revente.etat_id == 1 %}
+                    cyan
+                    {% elif revente.etat_id == 2 %}
+                    green
+                    {% else %}
+                    red
+                    {% endif %}
+                    ;">{{ revente['libelle_etat'] }}
+                </td>
+                <td>{{ revente['nom_carte'] }}</td>
+                <td>{{ revente['prix_revente'] }} <span class="emoji gold"></span></td>
+                <td>{{ revente['date_revente'].strftime('%d/%m/%Y - %Hh%M') }}</td>
+                <td>{{ revente['quantite'] }} </td>
+                <td>
+                    {% if revente.etat_id == 1 %}
+                    <form action="/membre/reventes/cancel" method="POST" class="conteneur_6">
+                        <button class="btn_3 btn_red">Annuler</button>
+                        <input type="hidden" name="id_revente" value="{{ revente.id_revente }}">
+                    </form>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% else %}
+<div class="conteneur_1">
+    <div class="line"></div>
+    <h5>Aucune revente pour le moment</h5>
+</div>
+{% endif %}
+
+<a href="/membre/reventes/add"><button class="btn_1 btn_blue">Ajouter une Revente</button></a>
+
+{% endblock %}
+
+
+{% block js %}
+<!-- Gère l'affichage dynamique de la revente sélectionnée -->
+<script src="/static/styles/js/refreshReventes.js"></script>
+{% endblock %}

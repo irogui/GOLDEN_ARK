@@ -1,0 +1,32 @@
+{% if item.get('Consomme') or item.get('Pond') %}
+    <div class="line"></div>
+    <h2>Créatures</h2>
+
+<div class="conteneur_1">
+
+    {% if item.get('Consomme') %}
+        <div class="card_3">
+            <h4>Préféré par:</h4>
+
+            <div class="conteneur_1">
+                {% for espece in item['Consomme'] %}
+                    <a href="/boutique/items/card?id_item={{ espece.id_item }}&id_type_item={{ espece.type_item_id }}"><img class="logo_5" src="/static/images/boutique/Espece/{{ espece.image_item }}" alt="image de {{ espece.nom_espece }}"></a>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if item.get('Pond') %}
+        <div class="card_3">
+            <h4>Ponte de l'oeuf:</h4>
+
+            <div class="conteneur_1">
+                {% for espece in item['Pond'] %}
+                    <a href="/boutique/items/card?id_item={{ espece.id_item }}&id_type_item={{ espece.type_item_id }}"><img class="logo_5" src="/static/images/boutique/Espece/{{ espece.image_item }}" alt="image de {{ espece.item }}"></a>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+</div>
+{% endif %}

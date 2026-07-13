@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<a class="back" href="/admin" style="margin-bottom: 5vw;">MENU ADMIN</a>
+
+<div class="commandes-container" style="font-family: 'Bebas Neue';">
+
+    <h4 class="titre-page">ESPECES</h4>
+
+    {% if especes %}
+
+    <!-- ===== PANNEAU FORMULAIRE ADMIN ===== -->
+    <form class="filtre" action="/admin/article/edit" method="POST">
+        <div class="control_article">
+            <div class="filtre-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="selectAll">
+                    Tout sélectionner
+                </label>
+            </div>
+
+            <div class="filtre-group">
+                <label>
+                    Multiplicateur:
+                    <input class="input_quantite"
+                           type="number"
+                           name="multiplicateur"
+                           step="0.0001">
+                </label>
+            </div>
+
+            <div class="filtre-group">
+                <label>
+                    Valeur:
+                    <input class="input_quantite"
+                           type="number"
+                           name="valeur"
+                           step="1">
+                </label>
+            </div>
+
+            <div class="filtre-group">
+                <button type="submit" class="filtre-btn">
+                    Appliquer
+                </button>
+            </div>
+        </div>
+
+        <!-- ===== TABLEAU ===== -->
+        <div class="table-wrapper" style="width: 100%;">
+            <table class="commandes-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Prix</th>
+                        <th>Commande Admin</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for espece in especes %}
+                    <tr>
+                        <td>
+                            <input type="checkbox"
+                                   class="checkbox-espece"
+                                   name="especes"
+                                   value="{{ espece['id_espece'] }}">
+                        </td>
+                        <td>{{ espece['id_espece'] }}</td>
+                        <td><span class="emoji" style='background-image: url("/static/images/boutique/Espece/{{ espece.nom_espece }}.png");'></span>{{ espece.nom_espece }}</td>
+                        <td>{{ espece['prix_espece'] }}<span class="emoji gold"></span></td>
+                        <td>{{ espece['commande_admin_espece'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </form>
+
+    {% else %}
+        <p class="no-commande">Aucune espece pour le moment.</p>
+    {% endif %}
+
+</div>
+
+<script>
+document.getElementById("selectAll").addEventListener("change", function() {
+    const checkboxes = document.querySelectorAll(".checkbox-espece");
+    checkboxes.forEach(cb => cb.checked = this.checked);
+});
+</script>
+
+{% endblock %}

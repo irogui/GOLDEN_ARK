@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <div class="accroche">
+        <h1>Les Items</h1>
+    </div>
+
+    <div class="conteneur_1">
+        {% for type in types %}
+        <div class="card_1">
+            <!-- Image catégorie -->
+            <a href="/boutique/items/show?id_type_item={{ type.id_type_item }}"><img src="/static/images/boutique/{{ type.nom_type_item }}/{{ type.image_item }}" alt="Image Catégorie {{ type.nom_type_item }}"></a>
+
+            <!-- Nom catégorie -->
+            <a href="/boutique/items/show?id_type_item={{ type.id_type_item }}">{{ type.nom_type_item }}s</a>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

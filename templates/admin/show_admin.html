@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<h1>Menu Admin</h1>
+
+<div class="conteneur_1">
+    <div class="conteneur_1">
+        <a class="btn_2" href="/admin/commandes">Gérer les Commandes</a>
+        <a class="btn_2" href="/admin/reventes">Gérer les Reventes</a>
+    </div>
+
+    <div class="conteneur_1">
+        <a class="btn_2" href="/admin/settings">Paramètres</a>
+        <a class="btn_2" href="/admin/cartes">Cartes</a>
+    </div>
+
+    <a class="btn_2" href="/admin/membre">Membres</a>
+
+    <!--
+    <a class="btn_2" href="/admin/invocation">Invocations</a>
+    <a class="btn_2" href="/admin/article">Articles</a>
+    <a class="btn_2" href="/admin/trophe">Trophés</a>
+    -->
+</div>
+{% endblock %}

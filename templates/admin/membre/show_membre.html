@@ -1,0 +1,132 @@
+{% extends "layout.html" %}
+
+{% block main %}
+{% macro display_value(value) -%}
+    {% if value is none %}
+        <span class="empty-value">/</span>
+    {% else %}
+        {{ value }}
+    {% endif %}
+{%- endmacro %}
+
+<style>
+    .empty-value {
+        color: #4a4a4a;
+        font-weight: 600;
+    }
+
+    .coffre-header,
+    .coffre-cell {
+        cursor: pointer;
+        user-select: none;
+    }
+
+    td.member-clickable {
+        cursor: pointer;
+        padding: 0.85rem 0;
+        box-sizing: border-box;
+        transition: background 0.2s ease;
+    }
+
+    td.member-clickable:hover {
+        background: rgba(92, 184, 63, 0.08);
+    }
+
+    td.member-clickable span {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .coffre-mask {
+        display: inline;
+        color: #4a4a4a;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+    }
+
+    .coffre-value {
+        display: none;
+    }
+
+    .table_3.show-coffre-column .coffre-mask,
+    .commandes-table.show-coffre-column .coffre-mask {
+        display: none;
+    }
+
+    .table_3.show-coffre-column .coffre-value,
+    .commandes-table.show-coffre-column .coffre-value {
+        display: inline;
+    }
+</style>
+
+<a class="btn_2" href="/admin"><span style="height: 1.35em; margin-right: 5px;">⪦</span>Retour</a>
+
+<h1>Membres</h1>
+<div class="conteneur_7">
+
+    {% if membres %}
+        <table class="table_3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Gold</th>
+                    <th>Rôle</th>
+                    <th>Date d'arrivée</th>
+                    <th>Code de coffre</th>
+                    <th>Dernier claim</th>
+                    <th>Nom de survivant</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for membre in membres %}
+                <tr>
+                    <td class="member-clickable" data-href="/admin/membre/edit?id_membre={{ membre['id_membre'] }}"><span>{{ display_value(membre['id_membre']) }}</span></td>
+                    <td class="member-clickable" data-href="/admin/membre/edit?id_membre={{ membre['id_membre'] }}"><span>{{ display_value(membre['nom_membre']) }}</span></td>
+                    <td class="member-clickable" data-href="/admin/membre/edit?id_membre={{ membre['id_membre'] }}"><span>{{ display_value(membre['gold']) }}{% if membre['gold'] is not none %}<span class="emoji gold"></span>{% endif %}</span></td>
+                    <td class="member-clickable" data-href="/admin/membre/edit?id_membre={{ membre['id_membre'] }}"><span>{{ display_value(membre['libelle_role']) }}</span></td>
+                    <td class="member-clickable" data-href="/admin/membre/edit?id_membre={{ membre['id_membre'] }}"><span>{{ display_value(membre['date_arrivee']) }}</span></td>
+                    <td class="coffre-cell">
+                        <span class="coffre-mask">••••</span>
+                        <span class="coffre-value">{{ display_value(membre['code_coffre']) }}</span>
+                    </td>
+                    <td class="member-clickable" data-href="/admin/membre/edit?id_membre={{ membre['id_membre'] }}"><span>{{ display_value(membre['dernier_claim']) }}</span></td>
+                    <td class="member-clickable" data-href="/admin/membre/edit?id_membre={{ membre['id_membre'] }}"><span>{{ display_value(membre['nom_survivant']) }}</span></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Aucun membre pour le moment.</p>
+    {% endif %}
+</div>
+
+<a class="btn_2" href="/admin"><span style="height: 1.35em; margin-right: 5px;">⪦</span>Retour</a>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const table = document.querySelector('.table_3');
+
+        if (table) {
+            const toggleCells = document.querySelectorAll('.coffre-cell');
+            toggleCells.forEach(function (cell) {
+                cell.addEventListener('click', function () {
+                    table.classList.toggle('show-coffre-column');
+                });
+            });
+        }
+
+        const memberCells = document.querySelectorAll('td.member-clickable');
+        memberCells.forEach(function (cell) {
+            cell.addEventListener('click', function () {
+                const href = cell.dataset.href;
+                if (href) {
+                    window.location.href = href;
+                }
+            });
+        });
+    });
+</script>
+
+{% endblock %}

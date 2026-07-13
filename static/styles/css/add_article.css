@@ -1,0 +1,184 @@
+/* ═══════════════════════════════════════════════════════════
+   GOLDEN ARK — ADD / EDIT ARTICLE (formulaires)
+   ═══════════════════════════════════════════════════════════ */
+
+
+
+.form-group {
+    margin-bottom: clamp(16px, 3vw, 36px);
+}
+
+
+.label_main {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(1rem, 1.5vw, 1.4rem);
+    color: #f0c060;
+    letter-spacing: 0.06em;
+    text-shadow: 0 0 10px rgba(240,192,96,0.3);
+}
+
+/* Inputs -------------------------------------------------------*/
+.form-control {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(92,184,63,0.3);
+    background: rgba(8,12,6,0.75);
+    color: white;
+    caret-color: #6dd14a;
+    font-family: "Saira Condensed", sans-serif;
+    font-size: 1rem;
+    transition: all 0.25s ease;
+}
+.form-control:focus {
+    outline: none;
+    border-color: #5cb83f;
+    background: rgba(12,18,10,0.9);
+    box-shadow: 0 0 12px rgba(92,184,63,0.25);
+}
+.form-control::placeholder { color: rgba(255,255,255,0.3); }
+
+select.form-control {
+    appearance: none;
+    background-image:
+        linear-gradient(45deg, transparent 50%, #d4af37 50%),
+        linear-gradient(135deg, #d4af37 50%, transparent 50%);
+    background-position: calc(100% - 18px) calc(50% - 3px),
+                         calc(100% - 12px) calc(50% - 3px);
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.edit-membre-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+}
+
+.edit-membre-header h1 {
+    margin: 0;
+    font-size: clamp(2rem, 3.8vw, 3rem);
+    letter-spacing: 0.08em;
+}
+
+.edit-membre-meta {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+
+.edit-membre-card {
+    width: 100%;
+    max-width: 920px;
+    padding: clamp(2rem, 3vw, 3rem);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(160deg, rgba(10, 14, 9, 0.96), rgba(16, 22, 14, 0.96));
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+}
+
+.edit-membre-form {
+    width: 100%;
+    display: grid;
+    gap: 1.75rem;
+}
+
+.edit-membre-form .form-group {
+    display: grid;
+    gap: 0.7rem;
+}
+
+.edit-membre-form label {
+    font-size: 1rem;
+    color: var(--or-clair);
+}
+
+.edit-membre-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.edit-membre-note {
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    border-left: 3px solid rgba(92, 184, 63, 0.5);
+    padding-left: 1rem;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 765px) {
+    .edit-membre-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .edit-membre-card {
+        padding: 1.5rem;
+    }
+}
+
+/* Bouton principal ------------------------------------------------------- */
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1.5px solid rgba(92,184,63,0.4);
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(1rem, 1.8vw, 1.5rem);
+    font-weight: normal;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #4a9c27, #2a5a12);
+    color: white;
+    box-shadow: 0 0 16px rgba(74,156,39,0.35);
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 24px rgba(109,209,74,0.5);
+    background: linear-gradient(135deg, #5dbc32, #366618);
+    border-color: rgba(109,209,74,0.6);
+}
+
+/* ── Variantes radio (option cards) ─────────────────────── */
+.options {
+    display: flex;
+    justify-content: center;
+    gap: clamp(10px, 1.5vw, 24px);
+    flex-wrap: wrap;
+    margin-top: 1vw;
+}
+
+.option_variante { display: flex; flex-direction: column; }
+.radio { display: none; }
+
+.radio:checked + .option-card {
+    border-color: #5cb83f;
+    background: rgba(28,48,20,0.9);
+    box-shadow: 0 0 14px rgba(92,184,63,0.3);
+    color: #90e060;
+}
+.radio:checked + .option-card img { filter: brightness(1.15) saturate(1.2); }
+
+/* ── Tableau apparitions ─────────────────────────────────  */
+
+/* ─────────────────────── MOBILE ─────────────────────────── */
+@media (max-width: 765px) {
+    form { width: 88%; padding: 18px 14px; }
+    .label_main { font-size: 5vw; }
+    .option-card { width: 80px; font-size: 2.5vw; }
+    .option-card img { width: 50px; }
+    .apparitions-table { font-size: 12px; }
+    .apparitions-table tbody input[type="checkbox"] { width: 18px; height: 18px; }
+}

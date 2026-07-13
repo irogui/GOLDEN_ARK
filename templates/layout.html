@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GOLDEN ARK</title>
+
+    <!-- importation icone -->
+    <link rel="icon" type="images/png" href="/static/images/icon/golden_ark_icon.png">
+
+    <!-- importation CSS Page -->
+    <link rel="stylesheet" href="/static/styles/css/header.css">
+    <link rel="stylesheet" href="/static/styles/css/style_gen.css">
+    <link rel="stylesheet" href="/static/styles/css/footer.css">
+
+    <link rel="stylesheet" href="/static/styles/css/polices.css">
+    <link rel="stylesheet" href="/static/styles/css/boutons.css">
+    <link rel="stylesheet" href="/static/styles/css/conteneurs.css">
+    <link rel="stylesheet" href="/static/styles/css/cards.css">
+    <link rel="stylesheet" href="/static/styles/css/logo.css">
+    <link rel="stylesheet" href="/static/styles/css/tables.css">
+    <link rel="stylesheet" href="/static/styles/css/others.css">
+</head>
+
+<body>
+    <header>
+        <a href="/">
+            <img class="logo_1" src="/static/images/icon/golden_ark_icon.png" alt="logo redirection accueil">
+        </a>
+
+        <nav class="nav_pages">
+            <a href="/boutique">Boutique</a>
+            <a href="/membre/panier">Panier</a>
+            <a href="/membre/commandes">Commandes</a>
+            <a href="/membre/reventes">Reventes</a>
+        </nav>
+
+        <nav class="nav_account">
+            {% if session.get('nom_membre') %}
+                <a href="/membre">PROFIL: {{ session['nom_membre'] }}</a>
+            {% else %}
+                <a href="/login">Se connecter</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="flash {{ category }}">
+            {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <a href="/">
+        <img class="logo_2" src="/static/images/icon/golden_ark_icon.png" alt="logo redirection accueil">
+    </a>
+
+    <!-- Contenu principal -->
+    <main>
+        {% block main %}
+        <div class="conteneur_1">
+            <h1> Bienvenue sur GOLDEN ARK !</h1>
+
+            <div class="line"></div>
+        </div>
+
+        {% include 'leader_board.html' %}
+
+        {% endblock %}
+    </main>
+
+    <footer>
+        <div class="footer_container">
+
+            <!-- <div class="footer_box">
+                <h4>Propriétés:</h4>
+            </div> -->
+
+            <div class="footer_box">
+                <h4>Rejoignez-nous:</h4>
+                <nav class="footer_socials">
+                    <a href="https://discord.gg/ZH3uwAkQwD"><img src="/static/images/icon/discord.png" alt="Discord: Golden ARK">GOLDEN ARK</a>
+                    <a href="https://www.tiktok.com/@izaar_12k?is_from_webapp=1&sender_device=pc"><img src="/static/images/icon/tiktok.png" alt="Tiktok: Izaar_12k">Izaar_12k</a>
+                    <a href="https://www.twitch.tv/xgolden1461"><img src="/static/images/icon/twitch.png" alt="Twitch: xgolden1461">xgolden1461</a>
+                </nav>
+            </div>
+
+            <div class="footer_box">
+                <h4>Développeurs:</h4>
+                <nav class="footer_socials">
+                    <a href="https://github.com/irogui"><img src="/static/images/icon/github.svg" alt="Github: irogui">Izaar_12k</a>
+                    <a href="https://github.com/EmileF67"><img src="/static/images/icon/github.svg" alt="Github : EmileF67">EmileF67</a>
+                </nav>
+            </div>
+
+        </div>
+
+        <div class="footer_bottom">
+            <!-- <p>© 2026 GOLDEN ARK. Tous droits réservés (ntm)</p> -->
+            <p><a href="{{ url_for('conditions_generales_utilisation') }}"><h9>Conditions Générales d'Utilisation</h9></a></p>
+            <p><a href="{{ url_for('mentions_legales') }}"><h9>Mentions légales</h9></a></p>
+            <p><a href="{{ url_for('politique_de_confidentialité') }}"><h9>Politique de confidentialité</h9></a></p>
+            <p><a href="{{ url_for('contact') }}"><h9>Nous contacter</h9></a></p>
+            <p><a href="{{ url_for('suppression_compte') }}"><h9>Suppression du compte</h9></a></p>
+        </div>
+    </footer>
+
+{% block js %}
+{% endblock %}
+
+</body>
+
+</html>

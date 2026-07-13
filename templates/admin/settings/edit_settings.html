@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<a class="btn_2" href="/admin"><span style="height: 1.35em; margin-right: 5px;">⪦</span>MENU ADMIN</a>
+
+<div class="conteneur_3">
+        <h1>Modification des Réglages</h1>
+
+        <form class="conteneur_2" method="POST" action="/admin/settings/edit">
+
+            <div class="conteneur_4">
+                <label for="montant_revente"><h8>Montant de Revente:</h8></label>
+                <input name="montant_revente" id="montant_revente" class="search_1" type="number" placeholder="Saisissez le plafond maximal de revente de trophés..." value="{{ settings.montant_revente }}" required>
+            </div>
+
+            <div class="conteneur_4">
+                <label for="interval_revente"><h8>Interval de Reventes (Jours):</h8></label>
+                <input name="interval_revente" id="interval_revente" class="search_1" type="number" placeholder="Saisissez l'interval entre chaque revente de trophés..." value="{{ settings.interval_revente }}" required>
+            </div>
+
+            <div class="conteneur_4">
+                <label for="niv_max_dino"><h8>Niveau Max Dino Sauvages:</h8></label>
+                <input name="niv_max_dino" id="niv_max_dino" class="search_1" type="number" placeholder="Saisissez le niveau maxiaml des dino sauvages..." value="{{ settings.niv_max_dino }}" required>
+            </div>
+
+            <div class="conteneur_4">
+                <label for="gain_giveaway"><h8>Gain du Giveaway:</h8></label>
+                <input name="gain_giveaway" id="gain_giveaway" class="search_1" type="number" placeholder="Saisissez le gain du giveaway journalier tiré au sort..." value="{{ settings.gain_giveaway }}" required>
+            </div>
+
+            <div class="conteneur_4">
+                <label for="gold_depart"><h8>Gold de Départ:</h8></label>
+                <input name="gold_depart" id="gold_depart" class="search_1" type="number" placeholder="Saisissez le solde d'un membre à son arrivée..." value="{{ settings.gold_depart }}" required>
+            </div>
+
+            <div class="conteneur_4">
+                <label for="gain_journalier"><h8>Récompense Journalière:</h8></label>
+                <input name="gain_journalier" id="gain_journalier" class="search_1" type="number" placeholder="Saisissez le montant de la récompense journalière..." value="{{ settings.gain_journalier }}" required>
+            </div>
+
+            <button type="submit" class="btn_1 btn_green">Valider les changements</button>
+
+        </form>
+</div>
+
+<a class="btn_2" href="/admin"><span style="height: 1.35em; margin-right: 5px;">⪦</span>MENU ADMIN</a>
+{% endblock %}

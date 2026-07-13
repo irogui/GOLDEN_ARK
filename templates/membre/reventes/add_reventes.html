@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+
+
+{% block main %}
+    <h1>Trophés</h1>
+
+    {% include '/membre/reventes/_add_reventes.html' %}
+
+
+{% endblock %}
+
+
+{% block js %}
+<!-- Fichier JS permettant de refresh dynamiquement la page à chaque fois qu'une quantité d'item est tapé ou incrémentée -->
+<script src="/static/styles/js/refreshTrophes.js"></script>
+{% endblock %}

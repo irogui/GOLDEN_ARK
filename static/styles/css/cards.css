@@ -1,0 +1,217 @@
+/*------------------- CARD 1 utilisée pour les catégories d'items -------------------*/
+.card_1 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border-radius: 12px;
+    padding: 6px 6px 10px;
+
+    background: linear-gradient(160deg, #2a3028, #1c2018);
+    border: 1px solid rgba(92,184,63,0.25);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.card_1:hover {
+    transform: translateY(-6px) scale(1.03);
+    border-color: rgba(92,184,63,0.55);
+    box-shadow:
+        0 10px 35px rgba(0,0,0,0.6),
+        0 0 20px rgba(92,184,63,0.2);
+}
+
+/* Reflet du haut sur la carte */
+.card_1::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, transparent, #5cb83f, transparent);
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+.card_1:hover::before { opacity: 1; }
+
+
+/* Image dans la card */
+.card_1 img {
+    width: clamp(80px, 11vw, 160px);
+    height: clamp(100px, 15vw, 200px);
+    object-fit: contain;
+    background: linear-gradient(160deg, #0e1a20, #131e2a);
+    border-radius: 6px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.7);
+    transition: all 0.3s ease;
+}
+.card_1:hover img { filter: brightness(1.1) saturate(1.15); }
+
+/* nom catégorie */
+.card_1 a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: clamp(0.9rem, 2vw, 1.4rem);
+    color: #d4e8c0;
+    letter-spacing: 0.06em;
+    margin-top: 8px;
+    transition: color 0.2s ease;
+    width: 100%;
+    text-align: center;
+}
+.card_1:hover a { color: #90e060; }
+
+
+
+/*----------------- CARD 2 utilisée l'affichage d'items dans une catégorie ------------------- */
+.card_2 {
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.5);
+    background: linear-gradient(160deg, #252820, #181b14);
+    border: 1px solid rgba(92,184,63,0.18);
+    transition: all 0.28s ease;
+    overflow: hidden;
+    min-height: 13vw;
+}
+.card_2:hover {
+    transform: translateY(-5px) scale(1.04);
+    border-color: rgba(92,184,63,0.45);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.6), 0 0 18px rgba(92,184,63,0.18);
+}
+.card:hover::after { opacity: 1; }
+.card_2::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    background: linear-gradient(to right, transparent, #5cb83f, transparent);
+    opacity: 0;
+    transition: opacity 0.28s ease;
+}
+
+/* Image dans la carte */
+.card_2 a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: clamp(100px, 13vw, 180px);
+    height: clamp(110px, 14vw, 200px);
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.card_2 img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 4px;
+    transition: all 0.28s ease;
+}
+.card img:hover { transform: scale(1.08); filter: brightness(1.12); }
+
+
+
+/*----------------- CARD 3 grises avec ombre verte de taille moyenne utilisée l'affichage des caractèristiques d'items ------------------- */
+.card_3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(16px, 2vw, 28px) clamp(20px, 3vw, 40px);
+
+    min-height: 9vw;
+    flex: 1 1 auto;
+
+    background: linear-gradient(160deg, rgba(28,36,24,0.9), rgba(18,24,16,0.9));
+    border: 1px solid rgba(92,184,63,0.2);
+    border-radius: 12px;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.4);
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+.card_3:hover {
+    border-color: rgba(92,184,63,0.4);
+    box-shadow: 0 4px 20px rgba(92,184,63,0.15);
+    transform: translateY(-2px);
+}
+.card_3::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #5cb83f, transparent);
+    opacity: 0.5;
+}
+
+
+/*----------------- CARD 4 avec bande noire au dessus utilisée pour l'affichage des apparitions d'especes sur cartes ------------------- */
+.card_4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid rgba(201,148,58,0.3);
+    background: linear-gradient(160deg, rgba(12,16,10,0.95), rgba(8,12,6,0.95));
+    overflow: hidden;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.5);
+    padding-top: 6px;
+}
+.card_4:hover {
+    border-color: rgba(201,148,58,0.55);
+    box-shadow: 0 4px 20px rgba(201,148,58,0.2);
+    transform: translateY(-2px);
+}
+
+
+/*----------------- CARD 5 simple  ------------------- */
+.card_5 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgba(255,255,255,0.15);
+    border-radius: 10px;
+    padding: 1vw;
+    width: 5vw;
+    height: auto;
+    background: rgba(18,22,15,0.7);
+    transition: all 0.22s ease;
+    color: rgba(255,255,255,0.7);
+    cursor: pointer;
+}
+.card_5:hover {
+    border-color: rgba(92,184,63,0.5);
+    background: rgba(28,38,20,0.85);
+    transform: scale(1.04);
+}
+.card_5 img {
+    width: 100%;
+    height: auto;
+    transition: filter 0.22s ease;
+}
+
+
+@media (max-width: 765px) {
+    .card_1 { padding: 4px 4px 8px; }
+    .card_1 img { width: 20vw; height: 25vw; }
+    .card_1 a { font-size: 4vw; }
+
+
+    .card_2 { max-width: 23vw; min-height: 33vw;}
+    .card_2 a { width: 24vw; height: 26vw; }
+
+
+    .card_3 {  }
+
+
+    .card_4 img { width: 35vw; }
+
+
+    .card_5 { width: 15vw; }
+    .card_5 img { width: 70%; }
+}

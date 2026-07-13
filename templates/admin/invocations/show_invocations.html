@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% block main %}
+<body style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/static/images/fonds_pages/fond_montagne.png'); background-size: cover;"></body>
+
+<a class="btn_2" href="/admin" style="margin-bottom: 5vw;">MENU ADMIN</a>
+
+<div class="commandes-container" style="font-family: 'Bebas Neue';">
+
+    <h4 class="titre-page">INVOCATIONS</h4>
+
+    {% if invocations %}
+
+        <!-- ===== TABLEAU ===== -->
+        <div class="table-wrapper" style="width: 100%;">
+            <table class="commandes-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Carte</th>
+                        <th>Créature</th>
+                        <th>Moment</th>
+                        <th>Intervalle</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for invocation in invocations %}
+                        <tr>
+                            <td>{{ invocation['id_invocation'] }}</td>
+                            <td>{{ invocation['nom_invocation'] }}</td>
+                            <td>{{ invocation['nom_carte'] }}</td>
+                            <td>x{{ invocation['nb_invocation'] }} - {{ invocation['nom_espece'] }} (niv {{ invocation['niveau_invocation'] }})</td>
+                            <td>{{ invocation['hm_invocation'] }}</td>
+                            <td>{{ invocation['intervalle'] }} jour</td>
+                            <td>
+                                <a href="/admin/invocation/edit?id_invocation={{ invocation['id_invocation'] }}">Modifier</a>
+                                <a href="#" onclick="confirmerSuppression({{ invocation['id_invocation'] }})">Supprimer</a>
+                            </td>
+                        </tr>
+                    </a>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </form>
+
+    {% else %}
+        <p class="no-commande">Aucune invocation pour le moment.</p>
+    {% endif %}
+
+
+    <div class="accroche">
+        <h1 style="text-decoration: none;">
+            <a style="color: blue;" href="/admin/invocation/add">Ajouter</a>
+        </h1>
+    </div>
+
+</div>
+
+<script>
+        function confirmerSuppression(id) {
+            let message = ' ATTENTION \n\nVoulez-vous vraiment supprimer cette créature ? \nCette action est IRRÉVERSIBLE !!!'
+
+            if (confirm(message)) {
+                    window.location.href = '/admin/invocation/delete?id_invocation=' + id;
+                }
+        }
+</script>
+{% endblock %}

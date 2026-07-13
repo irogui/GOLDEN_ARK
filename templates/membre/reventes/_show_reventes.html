@@ -1,0 +1,30 @@
+<thead>
+    <tr>
+        <th>Article</th>
+        <th>Quantite</th>
+        <th>Total</th>
+    </tr>
+</thead>
+
+<tbody>
+    {% for article in articles %}
+    <tr>
+
+        <td class="conteneur_6">
+            <span class="emoji"
+            style='background-image: url("/static/images/Trophe/{{ article.image_item_copy }}");'></span>
+
+            {{ article.nom_item_copy }}
+        </td>
+
+        <td>
+            {{ article.quantite }}
+        </td>
+
+        <td class="prix">
+            {{ article.prix_revente }}
+            <span class="emoji gold"></span>
+        </td>
+    </tr>
+    {% endfor %}
+</tbody>

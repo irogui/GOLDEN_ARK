@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* Variables */
+:root {
+    --vert-jungle:    #3a7c2e;
+    --vert-vif:       #5cb83f;
+    --vert-sombre:    #1e3d18;
+    --vert-neon:      #6dd14a;
+    --or:             #c9943a;
+    --or-clair:       #f0c060;
+    --or-pale:        #d4af37;
+    --brun-sombre:    #1b1a19;
+    --gris-card:      #242424;
+    --gris-mid:       #6F8282;
+    --blanc-soft:     rgba(255,255,255,0.88);
+    --ombre-verte:    rgba(58, 124, 46, 0.35);
+    --ombre-or:       rgba(201, 148, 58, 0.4);
+    --rayon:          10px;
+    --transition:     all 0.28s ease;
+}
+
+.emoji {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.gold { background-image: url("/static/images/icon/gold.png"); }
+
+body {
+    background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('/static/images/fonds_pages/fond_caverne.png');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: white;
+    font-family: "Saira Condensed", sans-serif;
+}
+
+main {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75%;
+    padding: 2vw;
+    border-radius: 12px;
+    border: 1px solid rgba(58, 124, 46, 0.3);
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.4), 0 4px 40px rgba(0,0,0,0.6), 0 0 30px var(--ombre-verte);
+    background: linear-gradient(160deg, rgba(28,28,24,0.97) 0%, rgba(20,24,18,0.97) 100%);
+    margin-bottom: 4vw;
+    gap: 3vw;
+}
+main::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 10%; right: 10%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--vert-vif), var(--or), var(--vert-vif), transparent);
+    border-radius: 2px;
+}
+
+.accroche {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 1em;
+}
+
+.line {
+    align-self: center;
+    width: 100%;
+    height: 2px;
+    margin: 1em 0;
+    background: linear-gradient(to right,
+        transparent,
+        var(--vert-sombre),
+        var(--vert-vif) 35%,
+        var(--or) 50%,
+        var(--vert-vif) 65%,
+        var(--vert-sombre),
+        transparent);
+    border-radius: 2px;
+    opacity: 0.7;
+}
+
+.flash {
+    font-family: "Courier New", monospace;
+    font-size: clamp(1rem, 2vw, 1.6rem);
+    margin: 10px auto;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: 2px solid var(--or-pale);
+    background: linear-gradient(135deg, rgba(30,30,20,0.95), rgba(50,40,10,0.9));
+    box-shadow: 0 0 20px var(--ombre-or);
+    letter-spacing: 0.05em;
+    z-index: 99;
+    position: relative;
+    text-align: center;
+    max-width: 70%;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* ------------------------------ MOBILE ------------------------------------- */
+@media (max-width: 765px) {
+    main { width: 85%; padding: 18px 14px; }  .flash { max-width: 90%; font-size: 5vw; }
+}

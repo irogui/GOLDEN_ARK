@@ -1,0 +1,30 @@
+{% for item in items %}
+
+    <!-- Item Image -->
+    <div class="card_2">
+        <!-- Image créature -->
+        <a href="/boutique/items/card?id_item={{ item.id_item }}&id_type_item={{ type.id_type_item }}"
+                                                            {% if item.nom_biome is defined %}
+                                                                  style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/static/images/fonds_cartes/{{ item.nom_biome }}.png');
+                                                                  background-size: cover;"
+
+                                                                  {% else %}
+
+                                                                  style="background-color: #656464;"
+
+                                                            {% endif %}>
+
+            <img src="/static/images/boutique/{{ type.nom_type_item }}/{{ item.image_item    }}" alt="{{ item.nom_item }} Image">
+        </a>
+
+        <!-- Caractéristiques item -->
+        <div>
+            <h3>{{ item.nom_item }}</h3>
+
+            {% if (type.id_type_item == 1 and item.taming == 1) or (type.id_type_item != 1) %}
+            <h4>{{ item.prix_item }} <span class="emoji gold"></span></h4>
+            {% endif %}
+        </div>
+
+    </div>
+{% endfor %}

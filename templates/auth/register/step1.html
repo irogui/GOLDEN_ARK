@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+
+{% block main %}
+<h1>Lisez moi !</h1>
+<h2>Étape 1</h2>
+<div class="conteneur_2">
+    <h10>
+        Pour que le système de (<span class="gold emoji"></span>) fonctionne correctement, il nous est contraint de lier un compte discord avec le compte que vous vous apprettez à créer. <br><br>
+
+        Pour venir à bout de l'inscription, veuillez suivre les instructions présentées au fur et à mesure que la procédure avance. <br><br>
+
+        Il est requis pour que la procédure marche que le bot puisse vous envoyer un message privé. Par conséquent, veuillez ouvrir vos messages privés dans les paramètres de discord si ce n'est pas déjà fait. Il faut également impérativement être présent sur le serveur discord. Sinon le bot ne pourra pas vous contacter. <br><br>
+
+        Pour obtenir votre identifiant discord, je vous propose une solutions simple. Tout d'abord, sur le serveur discord de Golden Ark, se trouve un salon nommé : "〘🆔〙◖identifiant  "<br>
+
+        Voici un lien directe vers le salon : <a href="https://discord.com/channels/1204737398370471946/1493595131754971197"><h9>Obtenir son identifiant discord</h9></a> <br><br>
+
+        Veuillez vous y rendre pour cliquer sur le bouton "Afficher mon identifiant" et notez l'identifiant qui vous est donné. <br><br>
+
+        Enfin, entrez l'identifiant dans le champs ci-dessous : <br><br>
+    </h10>
+    <form method="POST" class="conteneur_1">
+        <input type="number" class="search_1" name="discord-id" placeholder="Entrez votre identifiant discord..." required>
+        <button type="submit" class="btn_1 btn_green">Continuer <span style="height: 1.4em; margin-left: 5px;">⪧</span></button>
+    </form>
+</div>
+{% endblock %}

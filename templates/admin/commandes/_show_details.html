@@ -1,0 +1,39 @@
+<div class="conteneur_7">
+    <thead>
+        <tr>
+            <th>Article</th>
+            <th>Quantite</th>
+            <th>Prix Total</th>
+            <th>CMD ADMIN</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for article in articles %}
+        <tr>
+
+            <td class="conteneur_6">
+                <span class="emoji" style='background-image: url("/static/images/boutique/{{ article.nom_type_item }}/{{ article.image_item_copy }}");'></span>
+                {{ article.nom_item_copy }}
+
+                {% if article.id_sexe != 4 %}
+                <span class="emoji" style='background-image: url("/static/images/icon/{{ article.libelle_sexe }}.png")'></span>
+                {% endif %}
+            </td>
+
+            <td>
+                {{ article.quantite }}
+            </td>
+
+            <td>
+                {{ article.prix_commande }}
+                <span class="emoji gold"></span>
+            </td>
+
+            <td>
+                <h4>{{ article.commande_admin_item_copy }}</h4>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</div>

@@ -1,0 +1,88 @@
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="flash {{ category }}">
+            {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+
+<table id="trophes" class="table_1">
+
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Trophé</th>
+            <th>Valeur</th>
+            <th>Quantité</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for trophe in trophes %}
+        <tr>
+
+            <td>
+                <img class="logo_4" src="/static/images/Trophe/{{ trophe.image_item }}" alt="{{ trophe.nom_item }}">
+            </td>
+
+            <td>
+                <div {% if trophe.quantite_trophe > 0 %}
+                        style="color: lightgreen;"
+                    {% endif %}
+                     >
+                    {{ trophe.nom_item }}
+                </div>
+            </td>
+
+            <td>
+                {{ trophe.prix_item }}
+                <span class="emoji gold"></span>
+            </td>
+
+            <td>
+                <form>
+                    <input type="number"
+                           class="quantite_1"
+                           value="{{ trophe.quantite_trophe }}"
+                           min="0"
+                           max="2147483647"
+                           name="quantite_voulue"
+
+                           onchange="refreshTrophes(this)"
+                           onkeydown="if(event.key === 'Enter') refreshTrophes(this)">
+
+                    <input type="hidden" name="id_item" value="{{ trophe.id_item }}">
+                    <input type="hidden" name="prix_item" value="{{ trophe.prix_item }}">
+                    <input type="hidden" name="total_vente" value="{{ total_vente }}">
+                </form>
+            </td>
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="conteneur_4">
+    <h8>VALEUR TOTALE: {{ total_vente }} / {{ plafond_revente }}<span class="emoji gold"></span></h8>
+</div>
+
+<form class="conteneur_3" action="/membre/reventes/valid" method="POST">
+    <div class="conteneur_6">
+        <label for="id_carte"><h10>Carte:</h10></label>
+        <select id="id_carte" name="id_carte" class="search_1" required>
+            {% for carte in cartes %}
+            <option value="{{ carte.id_carte }}">{{ carte.nom_carte }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <a>
+        <button type="submit" class="btn_1 btn_green">Vendre</button>
+    </a>
+</form>
+
+<form class="btn_add" action="/membre/reventes/delete/all" method="GET"><button type="submit" class="btn_1 btn_red">Réinitialiser</button></form>

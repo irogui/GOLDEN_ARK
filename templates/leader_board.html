@@ -1,0 +1,29 @@
+<div class="conteneur_1">
+
+    <div class="conteneur_2">
+        <h2>Classement</h2>
+
+        <table class="table_1" id="table">
+            <thead>
+                <tr>
+                    <th>Place</th>
+                    <th>Nom</th>
+                    <th>Solde</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for membre in membres %}
+                <tr style="{% if actual_id_membre == membre.id_membre %}background-color: rgba(240, 192, 96, 0.5); border-left: 4px solid rgba(240, 192, 96, 0.8);{% endif %}">
+                    <td>{{ membre.Place }}</td>
+
+                    <td>{{ membre.nom_membre }}</td>
+
+                    <td>{{ membre.gold }}<span class="emoji gold"></span></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>

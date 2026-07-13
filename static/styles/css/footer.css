@@ -1,0 +1,127 @@
+/* ═══════════════════════════════════════════════════════════
+   GOLDEN ARK — FOOTER
+   ═══════════════════════════════════════════════════════════ */
+
+footer {
+    background: linear-gradient(180deg, #1a1917 0%, #111110 100%);
+    color: white;
+    font-family: "Saira Condensed", sans-serif;
+    border-radius: 14px 14px 0 0;
+    border-top: 1px solid rgba(58, 124, 46, 0.35);
+    box-shadow: 0 -4px 30px rgba(0,0,0,0.6), 0 -1px 0 rgba(58,124,46,0.2);
+    margin-top: 6vw;
+    width: 100%;
+    position: relative;
+}
+
+/* Ligne déco en haut du footer */
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 10%; right: 10%;
+    height: 2px;
+    background: linear-gradient(to right,
+        transparent, #3a7c2e, #f0c060, #3a7c2e, transparent);
+    border-radius: 2px;
+}
+
+.footer_container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: clamp(24px, 3vw, 48px);
+    gap: 4vw;
+}
+
+.footer_box {
+    padding: 20px;
+    text-align: center;
+    min-width: 220px;
+    max-width: 320px;
+}
+
+.footer_box h4 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(1rem, 1.5vw, 1.4rem);
+    margin-bottom: 14px;
+    color: #f0c060;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(240,192,96,0.35);
+}
+
+.footer_box p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.8);
+    margin: 5px 0;
+}
+
+.footer_names { color: #5cb83f; font-weight: 700; }
+.footer_source { font-style: italic; color: rgba(255,255,255,0.5); }
+
+/* Liens sociaux -------------------------------------------------------*/
+.footer_socials {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer_socials a {
+    color: white;
+    text-decoration: none;
+    background: linear-gradient(135deg, #2e6020, #1e4016);
+    border: 1px solid rgba(92,184,63,0.3);
+    border-radius: 8px;
+    padding: 7px 14px;
+    width: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: "Saira Condensed", sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    transition: all 0.25s ease;
+}
+
+.footer_socials a:hover {
+    transform: translateY(-2px) scale(1.03);
+    background: linear-gradient(135deg, #3d7a28, #2a5520);
+    box-shadow: 0 0 14px rgba(92,184,63,0.45);
+    border-color: rgba(109,209,74,0.5);
+}
+
+.footer_socials img {
+    width: 18px;
+    height: 18px;
+}
+
+.footer_img {
+    width: 110px;
+    height: auto;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+}
+.footer_img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 14px rgba(201,148,58,0.4);
+}
+
+/* ── Barre basse ────────────────────────────────────────── */
+.footer_bottom {
+    text-align: center;
+    background: rgba(0,0,0,0.4);
+    padding: 12px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.05em;
+}
+
+@media (max-width: 765px) {
+    .footer_container { padding: 24px 12px; gap: 24px; }
+}

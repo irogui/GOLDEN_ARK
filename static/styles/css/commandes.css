@@ -1,0 +1,88 @@
+.control_article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: clamp(20px, 4vw, 60px);
+    gap: clamp(8px, 1vw, 16px);
+}
+
+/* Container principal ------------------------------------------------------- */
+.commandes-container {
+    width: 88%;
+    margin: clamp(16px, 2.5vw, 40px) auto;
+    text-align: center;
+    color: #fff;
+    font-family: "Saira Condensed", sans-serif;
+    font-size: clamp(0.85rem, 1.3vw, 1.2rem);
+}
+
+/* ── Titre ──────────────────────────────────────────────── */
+.titre-page {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    color: #f0c060;
+    margin-bottom: 30px;
+    letter-spacing: 0.08em;
+    text-shadow: 0 0 18px rgba(240,192,96,0.35);
+}
+
+/* ── Tableau ────────────────────────────────────────────── */
+
+
+/* Message vide */
+.no-commande {
+    color: rgba(255,255,255,0.5);
+    margin-top: 24px;
+    font-family: "Saira Condensed", sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.04em;
+}
+
+/* ── Input quantité admin ───────────────────────────────── */
+.input_quantite {
+    width: clamp(40px, 4vw, 64px);
+    padding: 5px;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(0.75rem, 0.9vw, 1rem);
+    background: rgba(8,14,6,0.9);
+    color: #6dd14a;
+    border-radius: 6px;
+    border: 1px solid rgba(92,184,63,0.3);
+    text-align: center;
+}
+.input_quantite:focus {
+    outline: none;
+    border-color: #5cb83f;
+    box-shadow: 0 0 8px rgba(92,184,63,0.3);
+}
+
+/* ── Bouton filtre/action ───────────────────────────────── */
+.filtre-btn {
+    display: inline-block;
+    margin: auto;
+    padding: 7px 20px;
+    border-radius: 7px;
+    border: 1.5px solid rgba(240,192,96,0.4);
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(0.85rem, 1.4vw, 1.2rem);
+    letter-spacing: 0.1em;
+    background: linear-gradient(135deg, #b88a00, #7a5c00);
+    color: #1a1000;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 0 10px rgba(184,138,0,0.25);
+}
+.filtre-btn:hover {
+    transform: translateY(-1px) scale(1.03);
+    box-shadow: 0 0 18px rgba(240,192,96,0.45);
+    background: linear-gradient(135deg, #f0c060, #9a7010);
+    border-color: rgba(240,192,96,0.6);
+}
+
+/* ─────────────────────── MOBILE ─────────────────────────── */
+@media (max-width: 765px) {
+    .titre-page { font-size: 7vw; }
+    .commandes-container { width: 96%; font-size: 3.5vw; }
+    .input_quantite { width: 15vw; font-size: 3vw; }
+    .filtre-btn { font-size: 3.5vw; padding: 6px 14px; }
+}

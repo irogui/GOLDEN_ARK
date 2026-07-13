@@ -1,0 +1,125 @@
+/* logo du header */
+.logo_1 {
+    border-radius: 50%;
+    padding: 4px;
+    transition: all 0.3s ease;
+    width: 4vw;
+    height: auto;
+    filter: drop-shadow(0 0 6px rgba(201,148,58,0.4));
+}
+.logo_1:hover {
+    background: rgba(201,148,58,0.15);
+    box-shadow: 0 0 16px rgba(201,148,58,0.4);
+    transform: scale(1.06);
+}
+
+/* Gère le logo entre le header et le main */
+.logo_2 {
+    width: clamp(80px, 12vw, 180px);
+    height: auto;
+    margin: 10px auto;
+    display: block;
+    filter: drop-shadow(0 0 12px rgba(201,148,58,0.5));
+    transition: var(--transition);
+    position: relative;
+    z-index: 1;
+}
+.logo_2:hover {
+    filter: drop-shadow(0 0 22px rgba(201,148,58,0.9));
+    transform: scale(1.04);
+}
+
+/* Logo 3, utilisé pour l'img d'un item */
+.logo_3 {
+    margin-top: -2vw;
+    width: auto;
+    max-height: 25vw;
+    filter: drop-shadow(0 4px 16px rgba(0,0,0,0.7));
+    transition: filter 0.3s ease;
+}
+.logo_3:hover {
+    filter: drop-shadow(0 4px 24px rgb(133 116 35 / 0.76));
+}
+
+/* Logo 4, utilisé pour l'img des caractéristiques d'un item */
+.logo_4 {
+    height: clamp(50px, 7vw, 90px);
+    width: auto;
+    margin: 2px 0;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.6));
+    transition: transform 0.25s ease;
+}
+.logo_4:hover { transform: scale(1.08); }
+
+
+/* Logo 4 pour petites img, utilisé pour l'img des compléments de recettes (qui mange quoi, qui pond quoi) */
+.logo_5 {
+    width: 90px;
+    height: 90px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    background: linear-gradient(135deg, rgba(50,50,50,0.9), rgba(30,30,30,0.9));
+    border-radius: 10px;
+    border: 1.5px solid rgba(255,255,255,0.12);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    transition: all 0.25s ease;
+}
+.logo_5:hover {
+    transform: scale(1.08);
+    border-color: rgba(92,184,63,0.4);
+    box-shadow: 0 0 14px rgba(92,184,63,0.25);
+}
+
+
+/* Logo 6 */
+.logo_6 {
+    width: auto;
+    height: auto;
+    cursor: pointer;
+    background: rgba(10,10,8,0.8);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    padding: 2px;
+    transition: all 0.2s ease;
+}
+.logo_6:hover {
+    background: rgba(20,30,16,0.9);
+    border-color: rgba(92,184,63,0.3);
+}
+.logo_6 span {
+    width: 2vw;
+    height: 2vw;
+}
+
+
+.pfp {
+    width: clamp(80px, 12vw, 180px);
+    height: clamp(80px, 12vw, 180px); /* carré obligatoire pour un cercle */
+    border-radius: 50%;               /* cercle parfait */
+    object-fit: cover;                /* évite les déformations */
+    margin: 10px auto;
+    display: block;
+
+    filter: drop-shadow(0 0 12px rgba(201,148,58,0.5));
+
+    transition: var(--transition);
+    position: relative;
+    z-index: 1;
+}
+
+.pfp:hover {
+    filter: drop-shadow(0 0 22px rgba(201,148,58,0.9));
+    transform: scale(1.04);
+}
+
+
+
+
+@media (max-width: 765px) {
+    .logo_1 { width: 12vw; }
+
+    .logo_3 { max-height: 35vw; }
+
+    .logo_6 span { width: 4vw; height: 4vw; }
+}

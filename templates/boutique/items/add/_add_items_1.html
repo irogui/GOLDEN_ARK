@@ -1,0 +1,129 @@
+<div class="conteneur_4">
+    <label><h8>Apprivoisable:</h8></label>
+
+    <div class="conteneur_1">
+        <input type="radio" name="taming" id="taming_on" value="1" class="radio_1" checked>
+        <label class="card_5" for="taming_on">OUI</label>
+
+        <input type="radio" name="taming" id="taming_off" value="0" class="radio_1">
+        <label class="card_5" for="taming_off">NON</label>
+    </div>
+</div>
+
+<div class="conteneur_4">
+    <label><h8>Taille de l'Oeuf:</h8></label>
+
+    <div class="conteneur_1">
+        {% for oeuf in item['Oeuf'] %}
+        <input
+        name="id_oeuf"
+        id="taille_oeuf_{{ oeuf.id_oeuf }}"
+        type="radio"
+        class="radio_1"
+        value="{{ oeuf.id_oeuf }}"
+        required>
+
+        <label for="taille_oeuf_{{ oeuf.id_oeuf }}" class="card_5">
+            <img src="/static/images/boutique/Oeuf/{{ oeuf.taille_oeuf }}.png" alt="{{ oeuf.taille_oeuf }}">
+            <h4>{{ oeuf.taille_oeuf }}</h4>
+        </label>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="conteneur_4">
+    <label><h8>Biome:</h8></label>
+
+    <div class="conteneur_1">
+        {% for biome in item['Biome'] %}
+        <input
+        name="id_biome"
+        id="id_biome_{{ biome.id_biome }}"
+        type="radio"
+        class="radio_1"
+        value="{{ biome.id_biome }}"
+        required>
+
+        <label for="id_biome_{{ biome.id_biome }}" class="card_5">
+            <img src="/static/images/fonds_cartes/{{ biome.nom_biome }}.png" alt="{{ biome.nom_biome }}">
+            <h4>{{ biome.nom_biome }}</h4>
+        </label>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="conteneur_4">
+    <label><h8>Nourriture préférée:</h8></label>
+
+    <div class="conteneur_1">
+        {% for nourriture in item['Nourriture'] %}
+        <input
+        name="id_nourriture"
+        id="id_nourriture_{{ nourriture.id_item }}"
+        type="radio"
+        class="radio_1"
+        value="{{ nourriture.id_item }}"
+        required>
+
+        <label for="id_nourriture_{{ nourriture.id_item }}" class="card_5">
+            <img src="/static/images/boutique/Nourriture/{{ nourriture.image_item }}" alt="{{ nourriture.nom_item }}">
+            <h4>{{ nourriture.nom_item }}</h4>
+        </label>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="conteneur_4">
+    <label><h8>Trophés Récoltables:</h8></label>
+
+    <div class="conteneur_1">
+        {% for trophe in item['Trophe'] %}
+            <input
+                name="trophes_ids[]"
+                type="checkbox"
+                id="trophe_{{ trophe.id_item }}"
+                value="{{ trophe.id_item }}"
+                class="radio_1">
+
+            <label for="trophe_{{ trophe.id_item }}" class="card_5">
+                <img src="/static/images/Trophe/{{ trophe.image_item }}" alt="{{ trophe.nom_item }}" >
+                <h4>{{ trophe.nom_item }}</h4>
+            </label>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="conteneur_4">
+    <label><h8>Variantes:</h8></label>
+
+    <div class="conteneur_1">
+        {% for variante in item['Variante'] %}
+            <!-- la class radio_variantes n'existe que pour repérer l'element dans le fichier JSON gérant l'affichage du tableau des cartes en dessous -->
+            <input
+                name="variantes_ids[]"
+                type="checkbox"
+                class="radio_1 radio_variantes"
+                id="variante_{{ variante.id_variante }}"
+                value="{{ variante.id_variante }}"
+                data-nom="{{ variante.nom_variante }}"
+                {% if variante.id_variante == 1 %}checked{% endif %}>
+
+            <label for="variante_{{ variante.id_variante }}" class="card_5">
+                <h4>{{ variante.nom_variante }}</h4>
+            </label>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="conteneur_7">
+    <div id="apparitions"></div>
+</div>
+
+
+<!-- JS -->
+{% block js %}
+<script>
+    const CARTES = {{ item['Carte'] | tojson }};
+</script>
+<script src="/static/styles/js/table_variantes.js"></script>
+{% endblock %}

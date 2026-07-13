@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+
+{% block main %}
+<h1>Lisez moi !</h1>
+<h2>Étape 2</h2>
+<div class="conteneur_2">
+    <h10>
+        Un code à usage unique viens de vous être envoyé par message privé sur discord. Si vous ne l'avez pas reçu, et UNIQUEMENT si vous ne l'avez pas reçu, veuillez cliquer sur le lien suivant : <br>
+        <a href="{{ url_for('auth.register_resend_code') }}"><h9>Redemander un code.</h9></a> <br><br>
+        Chaque code envoyé a une durée de validitée avant expiration de 10 minutes. Un nouveau code généré rends l'ancien invalide. <br><br>
+        Copiez le code que vous avez obtenu et entrez le dans le champs ci-dessous : <br><br>
+    </h10>
+    <form method="POST" class="conteneur_1">
+        <input type="number" class="search_1" name="otp" placeholder="Entrez le code à usage unique..." required>
+        <button type="submit" class="btn_1 btn_green">Continuer <span style="height: 1.4em; margin-left: 5px;">⪧</span></button>
+    </form>
+</div>
+{% endblock %}

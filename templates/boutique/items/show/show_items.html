@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <div class="conteneur_2" id="filtreContainer">
+
+        <h2>{{ type.nom_type_item }}s</h2>
+            <input name="id_type_item" id="id_type_item" type="hidden" value="{{ type.id_type_item }}">
+            <input name="search_item" id="search_item" class="search_1" type="text" placeholder="Rechercher..." oninput="reloadItems()">
+
+        <!--
+        {% if cartes is defined %}
+        <h3 class="filtre-title">Cartes disponibles</h3>
+
+        <div class="filtre-cartes">
+            {% for carte in cartes %}
+                <label class="carte-option">
+                    <input type="checkbox"
+                           name="cartes_id[]"
+                           value="{{ carte.id_carte }}">
+                    <span class="custom-checkbox"></span>
+                    {{ carte.nom_carte }}
+                </label>
+            {% endfor %}
+        </div>
+        {% endif %}
+        -->
+
+    </div>
+
+    <div class="conteneur_1" id="select">
+        <!-- Importation des Résultats -->
+        {% include '/boutique/items/show/_show_items.html' %}
+    </div>
+
+    {% if session.get('role_id') == 1 %}
+    <a class="btn_1 btn_green" href="/boutique/items/add?id_type_item={{ type.id_type_item }}">Ajouter</a>
+    {% endif %}
+
+{% endblock %}
+
+
+{% block js %}
+<!-- Fichier JS permettant de recharger dynamiquement l'affichage des card en fonction du nom dans le filtre -->
+<script src="/static/styles/js/filtre.js"></script>
+{% endblock %}

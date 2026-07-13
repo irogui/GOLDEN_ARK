@@ -1,0 +1,103 @@
+{% if items|length > 0 %}
+<table class="table_1" id="table">
+    <thead>
+        <tr>
+            <th>Prix</th>
+            <th>Item</th>
+            <th>Quantité</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for item in items %}
+        <tr>
+            <td>
+                {{ item.prix_ligne }}<span class="emoji gold"></span>
+            </td>
+
+            <td>
+                <div class="conteneur_6">
+                    <a href="/boutique/items/card?id_item={{ item.id_item }}&id_type_item={{ item.id_type_item }}"><span class="emoji" style='background-image: url("/static/images/boutique/{{ item.nom_type_item }}/{{ item.image_item }}");'></span></a>
+
+                    <strong>x{{ item.quantite_panier }}</strong> - {{ item.nom_item }}
+
+                    {% if item.id_sexe != 4 %}
+                    <form>
+                        <input type="hidden" name="id_item" value="{{ item.id_item }}">
+                        <input type="hidden" name="id_sexe" value="{{ item.id_sexe }}">
+                        <input type="hidden" name="quantite_panier" value="{{ item.quantite_panier }}">
+
+                        <button onclick="refreshSex(this, event)" class="logo_6"><span class="emoji" style='background-image: url("/static/images/icon/{{ item.libelle_sexe }}.png")'></span></button>
+                    </form>
+                    {% endif %}
+                </div>
+            </td>
+
+            <td>
+                <form class="conteneur_6">
+                    <input type="number"
+                           class="quantite_1"
+                           value="{{ item.quantite_panier }}"
+                           min="1"
+                           max="2147483647"
+                           name="quantite_panier"
+
+                           onchange="refreshQuantite(this)"
+                           onkeydown="if(event.key === 'Enter') refreshQuantite(this)">
+
+                    <input type="hidden" name="id_item" value="{{ item.id_item }}">
+                    <input type="hidden" name="id_sexe" value="{{ item.id_sexe }}">
+                </form>
+            </td>
+
+            <td>
+                <form action="/membre/panier/delete" method="POST" class="conteneur_6">
+                    <button class="btn_3 btn_red">Supprimer</button>
+                    <input type="hidden" name="id_item" value="{{ item.id_item }}">
+                    <input type="hidden" name="id_sexe" value="{{ item.id_sexe }}">
+                </form>
+            </td>
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="conteneur_4">
+    <h2>PRIX TOTAL: {{ prix_total['prix_total'] }}<span class="emoji gold"></span></h2>
+</div>
+
+<form class="conteneur_3" action="/membre/commandes/add" method="POST">
+    <div class="conteneur_6">
+        <label for="id_carte"><h10>Carte:</h10></label>
+        <select id="id_carte" name="id_carte" class="search_1" required>
+            {% for carte in cartes %}
+            <option value="{{ carte.id_carte }}">{{ carte.nom_carte }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <a>
+        <button type="submit" class="btn_1 btn_green">Commander</button>
+    </a>
+
+</form>
+
+<form action="/membre/panier/delete/all" method="POST"><button type="submit" class="btn_1 btn_red">Tout supprimer</button></form>
+
+
+{% else %}
+<div class="conteneur_1">
+    <div class="line"></div>
+    <h5>Aucun item dans votre panier pour l'instant</h5>
+</div>
+{% endif %}
+
+
+{% block js %}
+<!-- Fichier JS permettant de refresh dynamiquement la page à chaque fois qu'une quantité d'item est tapé ou incrémentée -->
+<script src="/static/styles/js/refreshQuantite.js"></script>
+<!-- Même chose que pour l'autre JS mais cette fois pour le changement de sexe de l'item -->
+<script src="/static/styles/js/refreshSex.js"></script>
+{% endblock %}

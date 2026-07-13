@@ -1,0 +1,23 @@
+{% if item.get('Variantes') %}
+
+    {% for variante in item['Variantes'] %}
+    <div class="line"></div>
+
+    <h2>{{ item['Main'].nom_item }} - {{ variante.nom_variante }}</h2>
+    <div class="conteneur_1">
+
+        {% for carte in variante['Cartes'] %}
+        <div class="card_4">
+            <h6>{{ carte.nom_carte }}</h6>
+
+            {% if variante.id_variante == 1 %}
+                <img class="map_img" src="/static/images/apparitions/apparitions_especes/{{ item['Main'].nom_item }} - {{ carte.nom_carte }}.png">
+            {% else %}
+                <img class="map_img" src="/static/images/apparitions/apparitions_especes/{{ item['Main'].nom_item }}[{{ variante.nom_variante }}] - {{ carte.nom_carte }}.png">
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+
+{% endif %}

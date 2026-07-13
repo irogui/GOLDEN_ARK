@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <div class="conteneur_3">
+        <h1>Modifier le membre</h1>
+
+        <form method="POST" action="/admin/membre/edit" class="conteneur_2">
+            <input type="hidden" name="id_membre" value="{{ membre['id_membre'] }}">
+
+            <div class="conteneur_4">
+                <h8>ID Membre:</h8>
+                <h5>-{{ membre['id_membre'] }}-</h5>
+            </div>
+
+            <div class="conteneur_4">
+                <label for="nom_membre"><h8>Nom du membre</h8></label>
+                <input name="nom_membre" id="nom_membre" class="search_1" type="text" value="{{ membre['nom_membre'] or '' }}" placeholder="Laisser vide pour NULL">
+            </div>
+
+            <div class="conteneur_4">
+                <label for="gold"><h8>Gold :</h8></label>
+                <input name="gold" id="gold" class="search_1" type="number" min="0" step="1" value="{{ membre['gold'] }}" required>
+            </div>
+
+            <div class="conteneur_4">
+                <label for="role_id"><h8>Rôle :</h8></label>
+                <select name="role_id" id="role_id" class="search_1" required>
+                    {% for role in roles %}
+                    <option value="{{ role['id_role'] }}"
+                        {% if role['id_role'] == membre['role_id'] %}selected{% endif %}>
+                        {{ role['libelle_role'] }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="conteneur_4">
+                <label for="code_coffre"><h8>Code de coffre :</h8></label>
+                <input name="code_coffre" id="code_coffre" class="search_1" type="text" value="{{ membre['code_coffre'] or '' }}" required>
+            </div>
+
+            <div class="conteneur_4">
+                <label for="nom_survivant"><h8>Nom de survivant</h8></label>
+                <input name="nom_survivant" id="nom_survivant" class="search_1" type="text" value="{{ membre['nom_survivant'] or '' }}" placeholder="Laisser vide pour NULL">
+            </div>
+
+            <div class="conteneur_1">
+                <button type="submit" class="btn_1 btn_green">Valider</button>
+                <a class="btn_2" href="/admin/membre">Annuler</a>
+            </div>
+
+
+            <h5>Si un champ est vide ou contient <em>None</em>, il sera enregistré comme valeur nulle (NULL)</h5>
+        </form>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+
+{% block main %}
+    <div class="conteneur_3">
+        <img class="pfp" src="{{ pfp }}" alt="photo de profil">
+        <h7>-{{ membre['nom_membre'] }}-</h7>
+        <div class="line"></div>
+    </div>
+
+
+    <div class="conteneur_1">
+        <div class="card_3">
+            <h5>ID Membre:</h5>
+            <h6>{{ membre['id_membre'] }}</h6>
+        </div>
+
+        <div class="card_3">
+            <h5>Nom de survivant.e:</h5>
+            <h6>{{ membre['nom_survivant'] }}</h6>
+        </div>
+
+        <div class="card_3">
+            <h5>Rôle:</h5>
+            <h6>{{ membre['libelle_role'] }}</h6>
+        </div>
+
+        <div class="card_3">
+            <h5>Solde:</h5>
+            <h2>{{ membre['gold'] }}<span class="emoji gold"></span></h2>
+        </div>
+
+    </div>
+
+
+    <div class="conteneur_1">
+        <div class="card_3">
+            <a href="/membre/commandes"><h5>Commandes:</h5></a>
+            <h6>{{ membre['nb_commandes'] }}</h6>
+        </div>
+
+        <div class="card_3">
+            <a href="/membre/commandes"><h5>Reventes:</h5></a>
+            <h6>{{ membre['nb_reventes'] }}</h6>
+        </div>
+
+        <div class="card_3">
+            <h5>Code de Coffre:</h5>
+            <h7 class="secret" onclick="this.classList.toggle('revealed')">
+                [<span class="secret_value">{{ membre['code_coffre'] }}</span>]
+            </h7>
+        </div>
+    </div>
+
+
+    <div class="conteneur_3">
+        <div class="conteneur_1">
+            <a class="btn_2 btn_red" href="/logout">Me déconnecter</a>
+            <a class="btn_2 btn_blue" href="/membre/modify">Modifier mon profil</a>
+        </div>
+
+        {% if session.get('role_id') == 1 %}
+        <div class="conteneur_1">
+            <a class="btn_2" href="/admin">Menu Admin</a>
+        </div>
+        {% endif %}
+    </div>
+
+{% endblock %}

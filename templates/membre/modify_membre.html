@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <div class="conteneur_3">
+        <h1>Modifier mon profil</h1>
+
+        <form method="POST" action="/membre/modify" class="conteneur_2">
+
+            <div class="conteneur_4">
+                <h8>ID MEMBRE:</h8>
+                <h5>-{{ membre['id_membre'] }}-</h5>
+            </div>
+
+            <div class="conteneur_4">
+                <label for="nom_membre"><h8>Nom du membre :</h8></label>
+                <input name="nom_membre" id="nom_membre" class="search_1" type="text" value="{{ membre['nom_membre'] or '' }}" placeholder="Entrez votre pseudo PSN..." required>
+            </div>
+
+            <div class="conteneur_4">
+                <label for="nom_survivant"><h8>Nom de survivant :</h8></label>
+                <input name="nom_survivant" id="nom_survivant" class="search_1" type="text" value="{{ membre.nom_survivant or '' }}" placeholder="Entrez le nom de votre survivant dans le jeu..." required>
+            </div>
+
+            <div class="conteneur_4">
+                <label for="password"><h8>Mot de passe</h8></label>
+                <input name="password" id="password" class="search_1" type="password" placeholder="Nouveau mot de passe">
+                <h5>-Laissez le champ vide pour garder le même-</h5>
+            </div>
+
+            <div class="conteneur_1">
+                <button type="submit" class="btn_1 btn_green">Valider</button>
+                <a class="btn_1 btn_red" href="/membre">Annuler</a>
+            </div>
+
+            <h5>Vous pouvez modifier uniquement votre nom de membre, votre nom de survivant et votre mot de passe</h5>
+
+        </form>
+    </div>
+
+{% endblock %}

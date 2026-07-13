@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<a class="btn_2" href="/admin"><span style="height: 1.35em; margin-right: 5px;">⪦</span>MENU ADMIN</a>
+
+<h1>Cartes</h1>
+
+<div class="conteneur_1">
+    <div class="conteneur_7">
+        <table class="table_2">
+            <thead>
+                <tr>
+                    <th>Carte</th>
+                    <th>Disponible</th>
+                    <th>Coordonnées boutique</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for carte in cartes %}
+                <tr {% if carte.dispo_carte == 1 %} style="background-color: rgba(240, 192, 96, 0.5); border-left: 4px solid rgba(240, 192, 96, 0.8);" {% endif %}>
+                    <td>{{ carte.nom_carte }}</td>
+                    <td>{% if carte.dispo_carte == 1 %} OUI {% else %} NON {% endif %}</td>
+                    <td>{% if carte.coo_boutique is none %}
+                            AUCUNE
+                        {% else %}
+                            {{ carte.coo_boutique }}
+                        {% endif %}
+                    </td>
+                    <td><a class="btn_3 btn_blue" href="/admin/cartes/edit?id_carte={{ carte.id_carte }}">Modifier</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}

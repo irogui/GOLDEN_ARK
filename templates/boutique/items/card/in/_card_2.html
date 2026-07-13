@@ -1,0 +1,15 @@
+<div class="card_3">
+    <h5>Recette:</h5>
+    <div>
+
+        {% if item['Main'].get('taille_oeuf') %}
+        <a><h5><strong>x1</strong> <span class="emoji gold" style="background-image: url('/static/images/boutique/Oeuf/{{ item['Main'].taille_oeuf }}.png');"></span>- Oeuf {{ item['Main'].taille_oeuf }}</h5></a>
+        {% endif %}
+
+        {% for ingredient in item['Ingredient'] %}
+            <a>
+                <h5><strong>x{{ ingredient.quantite_nourriture }}</strong> <span class="emoji gold" style="background-image: url('/static/images/boutique/Nourriture/{{ ingredient.image_item }}');"></span>- {{ ingredient.nom_item }}</h5>
+            </a>
+        {% endfor %}
+    </div>
+</div>

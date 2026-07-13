@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <div class="accroche">
+        <h1>Ajout d'une invocation...</h1>
+    </div>
+
+    <form method="POST" action="/admin/invocation/edit">
+
+        <input type="hidden" name="id_invocation" value="{{ invocation['id_invocation'] }}">
+        <div class="form-group">
+            <label for="nom_invocation" class="label_main">Nom:</label>
+            <input name="nom_invocation" id="nom_invocation" class="form-control" type="text" placeholder="Entrez le nom de votre invocation..." value="{{ invocation['nom_invocation'] }}" required>
+        </div>
+
+        <div class="form-group">
+            <label class="label_main">Carte d'invocation:</label>
+
+            <div class="options">
+                {% for carte in cartes %}
+                <input
+                name="id_carte"
+                id="nom_carte_{{ carte.nom_carte }}"
+                type="radio"
+                class="radio"
+                value="{{ carte.id_carte }}"
+                required
+                {% if invocation['carte_id'] == carte['id_carte'] %}
+                checked
+                {% endif %}
+                >
+
+                <label for="nom_carte_{{ carte.nom_carte }}" class="option-card">
+                    <span>{{ carte.nom_carte }}</span>
+                </label>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="label_main">Créature invoquée:</label>
+
+            <div class="options">
+                {% for espece in especes %}
+                <input
+                name="id_espece"
+                id="nom_espece_{{ espece.nom_espece }}"
+                type="radio"
+                class="radio"
+                value="{{ espece.id_espece }}"
+                required
+                {% if invocation['espece_id'] == espece['id_espece'] %}
+                checked
+                {% endif %}
+                >
+
+                <label for="nom_espece_{{ espece.nom_espece }}" class="option-card">
+                    <img src="/static/images/boutique/Espece/{{ espece.nom_espece }}.png" alt="{{ espece.nom_espece }}">
+                    <span>{{ espece.nom_espece }}</span>
+                </label>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="niveau_invocation" class="label_main">Niveau de Créature:</label>
+            <input name="niveau_invocation" id="niveau_invocation" class="form-control" min="1" step="1" type="number" value="{{ invocation['niveau_invocation'] }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="nb_invocation" class="label_main">Nombre de Créatures:</label>
+            <input name="nb_invocation" id="nb_invocation" class="form-control" min="1" step="1" type="number" value="{{ invocation['nb_invocation'] }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="coo_invocation_x" class="label_main">Coodronnées(Une valeur négative pour mettre le mode aléatoire):</label>
+            X:<input name="coo_invocation_x" id="coo_invocation_x" class="form-control" min="-0.01" step="0.01" type="number" value="{{ invocation['coo_invocation_x'] }}" required>
+            Y:<input name="coo_invocation_y" id="coo_invocation_y" class="form-control" min="-0.01" step="0.01" type="number" value="{{ invocation['coo_invocation_y'] }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="hm_invocation" class="label_main">Heure d'invocation:</label>
+            <input name="hm_invocation" id="hm_invocation" class="form-control" type="time" value="{{ invocation['hm_invocation'] }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="intervalle" class="label_main">Intervalle entre les invocations (jours):</label>
+            <input name="intervalle" id="intervalle" class="form-control" min="1" step="1" type="number" value="{{ invocation['intervalle'] }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="message_invocation" class="label_main">Message affiché dans l'accueil:</label>
+            <input name="message_invocation" id="message_invocation" class="form-control" type="textarea" value="{{ invocation['message_invocation'] }}">
+        </div>
+
+        <div class="form-group">
+            <label for="show_invocation" class="label_main">Affichage du message pour tous les membres:</label>
+            <input name="show_invocation" id="show_invocation" class="form-control" type="checkbox"
+            {% if invocation['show_invocation'] %}
+            checked
+            {% endif %}
+            >
+        </div>
+
+        <button type="submit" class="btn_1 btn_green" style="margin-top: 5vw;">Ajouter</button>
+    </form>
+
+{% endblock %}

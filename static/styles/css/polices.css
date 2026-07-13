@@ -1,0 +1,105 @@
+h1 {
+    font-size: 3vw;
+    font-family: "Bebas Neue", sans-serif;
+    color: var(--or-clair);
+    text-shadow: 0 0 18px rgba(201, 148, 58, 0.55), 0 2px 4px rgba(0,0,0,0.8);
+    letter-spacing: 0.05em;
+}
+
+h2 {
+    text-align: center;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.8vw;
+    letter-spacing: 0.1em;
+    color: #f0c060;
+    text-shadow: 0 0 12px rgba(240,192,96,0.3);
+    margin: 0;
+}
+
+/* Petit texte moitié opaque en italique fait pour donner le nom d'un item dans le show d'une catégorie */
+h3 {
+    text-align: center;
+    font-family: "Saira Condensed", sans-serif;
+    font-size: clamp(0.7rem, 1.2vw, 1rem);
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(255,255,255,0.6);
+    margin: 0;
+}
+
+/* Petit texte gold pour indiquer le prix d'un item */
+h4 {
+    text-align: center;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(0.8rem, 1.3vw, 1.1rem);
+    color: #f0c060;
+    margin: 2px 0 4px;
+    padding-left: 4px;
+    text-shadow: 0 0 8px rgba(240,192,96,0.4);
+}
+
+/* Petit texte moitié opaque, utilisé pour indiquer le nom d'une caractèristique */
+h5 {
+    font-family: "Saira Condensed", sans-serif;
+    font-size: 1vw;
+    font-weight: 500;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 4px;
+}
+
+/* Texte blanc classique */
+h6 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(1.1rem, 2vw, 1.8rem);
+    margin: 0;
+    color: white;
+    letter-spacing: 0.04em;
+    opacity: 0.7;
+}
+
+/* Police avec style ancien roman, utilisée pour le code du coffre d'un membre */
+h7 {
+    font-family: "Courier New", monospace;
+    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+    letter-spacing: 0.1em;
+}
+
+/* Police h4 en plus grande et située à gauche de la div */
+h8 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.7vw;
+    color: #f0c060;
+    margin: 2px 0 4px;
+    padding-left: 4px;
+    text-shadow: 0 0 8px rgba(240,192,96,0.4);
+}
+
+/* Petit sans taille définie vert souligné indiquant un lien */
+h9 {
+    color: rgb(74, 170, 48);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Texte normal à lire */
+h10 {
+    font-family: "Saira Condensed", sans-serif;
+    font-size: 1.5vw;
+    font-weight: 400;
+    color: rgba(255,255,255,0.8);
+    padding: 15px;
+}
+
+
+
+
+
+@media (max-width: 765px) {
+    h1 { font-size: 7vw; }
+    h2 { font-size: 5vw; }
+    h5 { font-size: 2vw; }
+    h8 { font-size: 3vw; }
+    h10 { font-size: 3.5vw; }
+}
