@@ -51,6 +51,16 @@ Par ailleurs c'est grâce aux acquis de ma 1er année en BUT Informatique que j'
 - Affichage des différentes boutiques dans le jeu avec une carte et leur coordonnées (en cours de dev)
 
 
+## Outils
+| Domaine         | Technologies                        |
+| --------------- | ------------------------------------|
+| Front-end       | HTML, CSS, JavaScript               |
+| Back-end        | Flask                               | 
+| Base de données | MySQL                               |
+| Versioning      | Git / GitHub                        |
+| Hébergement     | Self-hosting avec Nginx et Gunicorn |
+
+
 
 ## Base de Données
 Les données stockées avant le début du développement du site étaient dans un fichier JSON.
@@ -59,7 +69,11 @@ Mais grâce aux connaissances acquises, nous avons pu faire une véritable base 
 ![MCD](./BD/MCD/MCD.png)
 ![MCD](./BD/MCD/MLD.png)
 
-La première étape a consisté à identifier les principales entités du projet (Membre, Item, Carte, Commandes) ainsi que les relations qui les lient. Cette réflexion a permis de construire ce MCD.
-Certains éléments du jeu partagent des propriétés communes. Une table Item a donc été utilisée comme entité principale, tandis que les différents types d'objets (Espece, Arme, Nourriture, Structure, Trophe, Munition...) possèdent chacun leur propre table spécialisée qui hérite de la table Item.
-*Exemple: Même si une nourriture ont des attributs différents, ils ont toujours un nom, un prix,..., Mais il faut aussi penser au fait qu'une Espece à d'autres attributs comme sa nourriture préféré. Et il en est de même pour la nourriture qui peut être faite avec une recette d'ingrédients qui sont elles mêmes de la nourriture*
+### Points de Réflexion:
+La première étape a consisté à identifier les principales entités du projet (Membre, Item, Carte, Commandes) ainsi que les relations qui les lient mais certaines entités avaient des particularités plus complexes que d'autres:
+
+- Certains éléments du jeu partagent des propriétés communes, une table Item a donc été utilisée comme entité principale, tandis que les différents types d'objets (Espece, Arme, Nourriture, Structure, Trophe, Munition...) possèdent chacun leur propre table spécialisée qui hérite de la table Item.*Exemple: Même si une nourriture et une espece ont des attributs différents, ils ont toujours un nom, un prix,..., Mais il faut aussi penser au fait qu'une Espece à d'autres attributs comme sa nourriture préféré. Et il en est de même pour la nourriture qui peut être faite avec une recette d'ingrédients qui sont elles mêmes de la nourriture*
+
+- Venait ensuite le besoin d'avoir un historique de toutes les commandes/reventes, mais le problème étant qu'il arrive qu'un Item soit supprimé ou modifié pour X raisons. Or un Item qui a déjà été commande/vendu ne peut être supprimé puisqu'il est clé étrangère dans une table permettant de stocker la transaction. Donc j'ai crée une table qui s'appelle Item_Copy, dès lors qu'une commande/vente est effectuée, un algorithme vérifie si l'item venant de la table Item existe aussi dans Item_Copy avec les mêmes caractèristiques (nom, prix, cmd_admin), si ce n'est pas le cas, il en crée un nouveau; et cela permet donc de garder un historique tout en pouvant supprimer ou modifier les items affichés dans la boutique.
+
 
