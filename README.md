@@ -1,5 +1,6 @@
 # GOLDEN ARK
 *Plateforme web permettant la gestion d'une communauté ARK en complément d'un bot Discord.*
+
 Début: Avril 2026 | Déploiement Juillet 2026
 
 Lien: [https://golden-ark.emerald-prism.fr/](https://golden-ark.emerald-prism.fr/)
@@ -55,5 +56,5 @@ Par ailleurs c'est grâce aux acquis de ma 1er année en BUT Informatique que j'
 Les données stockées avant le début du développement du site étaient dans un fichier JSON.
 Mais grâce aux connaissances acquises, nous avons pu faire une véritable base de données relationelle, ce qui permettrait de stocker bcp de plus données car leur intégrité est garantie, et avec un SGBD (système de gestion de de base de données) il est possible d'effectuer des requêtes plus puissantes et plus efficaces car des requêtes SQL permettent des jointures, agrégations, etc.
 
-![MCD](BD/MCD/MCD.png)
-![MCD](BD/MCD/MLD.png)
+![MCD](/BD/MCD/MCD.png)
+![MCD](/BD/MCD/MLD.png)
