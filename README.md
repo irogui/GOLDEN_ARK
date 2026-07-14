@@ -77,3 +77,17 @@ La première étape a consisté à identifier les principales entités du projet
 - Venait ensuite le besoin d'avoir un historique de toutes les commandes/reventes, mais le problème étant qu'il arrive qu'un Item soit supprimé ou modifié pour X raisons. Or un Item qui a déjà été commande/vendu ne peut être supprimé puisqu'il est clé étrangère dans une table permettant de stocker la transaction. Donc j'ai crée une table qui s'appelle Item_Copy, dès lors qu'une commande/vente est effectuée, un algorithme vérifie si l'item venant de la table Item existe aussi dans Item_Copy avec les mêmes caractèristiques (nom, prix, cmd_admin), si ce n'est pas le cas, il en crée un nouveau; et cela permet donc de garder un historique tout en pouvant supprimer ou modifier les items affichés dans la boutique.
 
 
+## Templates et CSS
+Pour le design du site, j'avais prévu depuis le début un style faisant "nature sauvage" avec un mélange de vert, or et noir, tout en ayant quelque images de fond provenant directement du jeu ARK.
+Cependant le rendu que j'arrivais à produire était loin de mes attentes, j'ai donc utilisé l'IA pour m'apprendre à maîtriser les ombres, brillances et formes qui donnaient une allure plus moderne au site. Mais nouveau problème, l'ancienne méthode d'édition d'un style reposait sur le fait de créer un fichier CSS entier pour faire un seul template, si des styles se répétaient, je faisais un simple copier-coller vers le fichier CSS de la page voulue.
+Pour palier ce problème j'ai alors conçu des styles réutilisables. Je mettais les class qui concernaient les mêmes éléments dans des les mêmes fichiers CSS pour donner une organisation claire:
+boutons.css / conteneurs.css / card.css / polices.css /...
+A l'intérieur de ces fichiers, différents styles étaient présents, décrits et numérotés pour pouvoir les réutiliser dès qu'on en a besoin, ainsi il est bcp plus efficace de faire un template HTML.
+
+
+## Difficultés Rencontrées
+- 1er MCD raté, aucun héritage, les items (armes, especes,...) étaient considéré comme totalement différents. Ce qui complique tout changement, ajout ou modification.
+- Eviter les incohérences entre le bot et le site
+- Travailler à deux avec Git (il y a eu quelques merges un peu délicats)
+- Connaissances limitées en UI Design (User Interface Design), nous avons donc utilisé l'IA pour nous recommander des styles avec ombres, espacements, formes, surbrillance,...
+- 
