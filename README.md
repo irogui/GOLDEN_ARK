@@ -58,3 +58,8 @@ Mais grâce aux connaissances acquises, nous avons pu faire une véritable base 
 
 ![MCD](./BD/MCD/MCD.png)
 ![MCD](./BD/MCD/MLD.png)
+
+La première étape a consisté à identifier les principales entités du projet (Membre, Item, Carte, Commandes) ainsi que les relations qui les lient. Cette réflexion a permis de construire ce MCD.
+Certains éléments du jeu partagent des propriétés communes. Une table Item a donc été utilisée comme entité principale, tandis que les différents types d'objets (Espece, Arme, Nourriture, Structure, Trophe, Munition...) possèdent chacun leur propre table spécialisée qui hérite de la table Item.
+*Exemple: Même si une nourriture ont des attributs différents, ils ont toujours un nom, un prix,..., Mais il faut aussi penser au fait qu'une Espece à d'autres attributs comme sa nourriture préféré. Et il en est de même pour la nourriture qui peut être faite avec une recette d'ingrédients qui sont elles mêmes de la nourriture*
+
